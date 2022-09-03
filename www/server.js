@@ -36,9 +36,10 @@ const util_1 = require("./util/util");
     //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
     /**************************************************************************** */
     app.get('/filteredimage', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-        const image_url = req.query.imageurl;
+        console.log(req.query);
+        const image_url = req.query.image_url;
         if (!image_url) {
-            res.status(400).json({ message: `Image URL is required!` });
+            res.status(400).json(`Image URL is required!`);
         }
         const filteredImg = yield util_1.filterImageFromURL(image_url);
         res.status(200).sendFile(filteredImg, () => {
